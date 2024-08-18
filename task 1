@@ -1,0 +1,144 @@
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+df = pd.read_csv("iris_csv (1).csv")
+
+df.head()
+
+df.tail()
+
+df.info()
+
+df.describe()
+
+df.shape
+
+df.isnull()
+
+df.head(1)
+
+df.tail(1)
+
+df.columns
+
+df.nunique()
+
+df['sepallength'].unique()
+
+df['class'].unique()
+
+df.isnull().sum()
+
+
+
+import pandas as pd
+import requests
+from io import BytesIO
+
+
+url = 'https://archive.ics.uci.edu/ml/machine-learning-databases/iris/iris.data'
+response = requests.get(url)
+iris_web = pd.read_csv(BytesIO(response.content), header=None,
+names=['sepal_length2', 'sepal_width', 'petal_length', 'petal_width', 'species'])
+
+
+print(iris_web.head())
+
+print('Descriptive statistics for Iris dataset:')
+print(iris_web.describe())
+
+print('\nMean values for each species:')
+print(iris_web.groupby('species').mean()) 
+
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+
+
+flights = sns.load_dataset('flights')
+flights.head()
+april_flights = flights.query('month == "May"') 
+sns.lineplot(data=april_flights, x='year', y='passengers')
+
+
+iris= sns.load_dataset('iris')
+sns.kdeplot(data =iris)
+
+import numpy as np
+import matplotlib.pyplot as plt
+x = np.arange(-3.0, 3.0, 0.1)
+y = np.arange(-3.0, 3.0, 0.1)
+X, Y = np.meshgrid(x, y)
+Z = np.sin(X)*np.cos(Y)
+fig, ax = plt.subplots(figsize=(6,6))
+ax.contour(X,Y,Z)
+plt.show()
+
+
+import numpy as np
+import matplotlib.pyplot as plt
+x = np.arange(-3.0, 3.0, 0.1)
+y = np.arange(-3.0, 3.0, 0.1)
+X, Y = np.meshgrid(x, y)
+Z = np.sin(X)*np.cos(Y)
+fig, ax = plt.subplots(figsize=(6,6))
+ax.contourf(X,Y,Z)
+plt.show()
+
+
+import pandas as pd
+from sklearn.datasets import load_diabetes
+import seaborn as sns
+import matplotlib.pyplot as plt
+df=pd.read_csv('/content/iris_csv (1).csv')
+df
+
+
+import pandas as pd
+
+
+numerical_df = df.select_dtypes(include=['number']) 
+
+
+corr = numerical_df.corr(method='pearson')
+
+print(corr)
+
+
+
+
+c = np.corrcoef(df['sepallength'],df['petallength'])
+print('Correlations between sepallength and  petallength\n',c)
+
+
+plt.figure(figsize=(10,8), dpi =500)
+sns.heatmap(corr,annot=True,fmt='.2f', linewidth=.5)
+plt.show()
+
+
+import pandas as pd
+import matplotlib.pyplot as plt
+
+
+plt.scatter(df['sepallength'], df['sepalwidth'])  
+plt.xlabel('Sepal Length')
+plt.ylabel('Sepal Width')
+plt.title('Scatter Plot of Sepal Length vs Sepal Width')
+plt.show()
+
+
+import pandas as pd
+import matplotlib.pyplot as plt
+
+plt.hist(df['sepallength'], bins=10)
+plt.xlabel('Sepal Length')
+plt.ylabel('Frequency')
+plt.title('Histogram of Sepal Length')
+plt.show()
+
+
+
